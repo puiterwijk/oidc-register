@@ -40,8 +40,6 @@ def _parse_args():
                                      'Client')
     parser.add_argument('provider_url',
                         help='Base URL to the provider to register at')
-    parser.add_argument('application_url',
-                        help='Base URL to the application')
     parser.add_argument('redirect_uris', nargs='+',
                         help='Redirect URIs to the application')
     parser.add_argument('--token-introspection-uri',

@@ -74,7 +74,7 @@ def main():
     if args.debug:
         print('Provider info: %s' % OP)
 
-    if not 'registration_endpoint' in OP:
+    if 'registration_endpoint' not in OP:
         print('Provider does not support dynamic client registration')
         return 1
 

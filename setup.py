@@ -1,6 +1,5 @@
 import os.path
 import io
-import sys
 
 from setuptools import setup
 
@@ -20,7 +19,7 @@ setup(
         'oidc_register',
     ],
     install_requires=[
-        'six',
+        'httplib2',
     ],
     tests_require=['nose', 'mock'],
     entry_points={

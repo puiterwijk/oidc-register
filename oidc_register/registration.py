@@ -63,6 +63,10 @@ def check_redirect_uris(uris, client_type=None):
             if client_type == 'web':
                 raise ValueError('http://localhost url with web client')
             client_type = 'native'
+        elif uri == 'urn:ietf:wg:oauth:2.0:oob':
+            if client_type == 'web':
+                raise ValueError('OOB url with web client')
+            client_type = 'native'
         else:
             if (uri.startswith('http://') and
                     not uri.startswith('http://localhost')):

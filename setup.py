@@ -9,12 +9,12 @@ with io.open(os.path.join(here, 'README.rst')) as f:
 
 setup(
     name='oidc-register',
+    version='0.1.0',
     description='OpenID Connect Dynamic Client Registration tool',
     long_description=readme,
     url='https://github.com/puiterwijk/oidc-register',
     author='Patrick Uiterwijk',
     author_email='patrick@puiterwijk.org',
-    version='0.0.2',
     packages=[
         'oidc_register',
     ],

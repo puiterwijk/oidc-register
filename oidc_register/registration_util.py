@@ -48,6 +48,8 @@ def _parse_args():
                         help='File to write client info to')
     parser.add_argument('-t', '--auth-token', default=None, dest="auth_token",
                         help='Authentication Token; used when registration requires authentication.')
+    parser.add_argument('--public-client', action='store_true',
+                        help="The client is public and has therefore no password")
     parser.add_argument('--debug', action='store_true')
     return parser.parse_args()
 
@@ -79,7 +81,12 @@ def main():
         return 1
 
     try:
-        reg_info = registration.register_client(OP, redirect_uris, auth_token=args.auth_token)
+        reg_info = registration.register_client(
+            OP,
+            redirect_uris,
+            auth_token=args.auth_token,
+            public=args.public_client,
+        )
     except Exception as ex:
         print('Error registering client')
         if args.debug:

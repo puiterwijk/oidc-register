@@ -124,7 +124,7 @@ def register_client(
     if public:
         submit_info['token_endpoint_auth_method'] = 'none'
         submit_info['client_secret'] = ''
-        submit_info['client_secret_expires_at'] = '0'
+        submit_info['client_secret_expires_at'] = 0
         submit_info['client_id_issued_at'] = int(time.time())
 
     headers = {'Content-type': 'application/json'}

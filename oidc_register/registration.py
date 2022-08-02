@@ -24,6 +24,7 @@
 
 import json
 import httplib2
+import time
 
 from oidc_register import _json_loads
 
@@ -93,7 +94,9 @@ class RegistrationError(Exception):
 
 
 # OpenID Connect Dynamic Client Registration 1.0
-def register_client(provider_info, redirect_uris, auth_token=None):
+def register_client(
+    provider_info, redirect_uris, auth_token=None, public=False
+):
     """
     This function registers a new client with the specified OpenID Provider,
     and then returns the regitered client ID and other information.
@@ -118,6 +121,11 @@ def register_client(provider_info, redirect_uris, auth_token=None):
     submit_info = {'redirect_uris': redirect_uris,
                    'application_type': client_type,
                    'token_endpoint_auth_method': 'client_secret_post'}
+    if public:
+        submit_info['token_endpoint_auth_method'] = 'none'
+        submit_info['client_secret'] = ''
+        submit_info['client_secret_expires_at'] = '0'
+        submit_info['client_id_issued_at'] = int(time.time())
 
     headers = {'Content-type': 'application/json'}
     if auth_token:
